@@ -9,7 +9,7 @@ flannel_source_type: package
 flannel_releases_dir: /opt
 
 #flannel_version
-flannel_version: 0.7.1
+flannel_version: 0.10.0
 
 #The backend that flannel should use
 flannel_backend: vxlan

@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: fluentd-es
-        image: k8s.gcr.io/fluentd-elasticsearch:1.20
+        #image: k8s.gcr.io/fluentd-elasticsearch:1.20
+        image: docker.io/kubernetes/fluentd-elasticsearch:latest
         command:
           - '/bin/sh'
           - '-c'
