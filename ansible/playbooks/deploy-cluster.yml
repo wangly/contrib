@@ -66,11 +66,26 @@
   roles:
     - { role: contiv, contiv_role: netplugin, when: networking == 'contiv' }
 
-# 修改系统配置，支持转发
+# 修改系统配置
 - hosts: all
   user: root
   # 是否允许身份切换
   become: yes
   tasks:
+  # 支持转发
   - name: update_sysconf
     shell: echo 1 > /proc/sys/net/ipv4/ip_forward
+  # 安装必须报
+  - name: install_rhsm
+    shell: yum install *rhsm* -y
+
+# 为节点添加label
+- name: Add label
+  hosts: masters
+  user: root
+  # 是否允许身份切换
+  become: yes
+  tasks:
+  - name: add_lable
+    shell: kubectl label node node1 role=api-gateway
+    # shell: kubectl label nodes --all role=api-gateway（所有节点都作为网关）
