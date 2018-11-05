@@ -99,6 +99,9 @@ kube_ui: false
 # Turn to false to disable the kube-dash addon for this cluster
 kube_dash: true
 
+# 安装ingress
+ingress: true
+
 # Turn to false to disable the node_problem_detector addon for this cluster
 node_problem_detector: false
 

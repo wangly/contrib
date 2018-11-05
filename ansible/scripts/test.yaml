@@ -1,9 +1,0 @@
-# 修改系统配置，支持转发
-- hosts: all
-  user: root
-  # 是否允许身份切换
-  become: yes
-  tasks:
-  - name: update_sysconf
-    shell: echo 1 > /proc/sys/net/ipv4/ip_forward
- 
