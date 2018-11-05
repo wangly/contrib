@@ -1,14 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-rule
+  name: default-ingress-rule
   namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: traefik.vod.com
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: traefik-web-ui
-          servicePort: web
+  #- host: vod.tencent.com
+  #  http:
+  #    paths:
+  #    - path: /traefix
+  #      backend:
+  #        serviceName: traefik-web-ui
+  #        servicePort: web

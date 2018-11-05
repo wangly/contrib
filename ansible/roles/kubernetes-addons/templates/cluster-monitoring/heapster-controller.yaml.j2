@@ -22,6 +22,7 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ''
         scheduler.alpha.kubernetes.io/tolerations: '[{"key":"CriticalAddonsOnly", "operator":"Exists"}]'
     spec:
+      dnsPolicy: ClusterFirst
       containers:
         #- image: k8s.gcr.io/heapster:v1.2.0
         - image: docker.io/ist0ne/heapster:v1.2.0

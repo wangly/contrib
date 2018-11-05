@@ -20,6 +20,7 @@ spec:
         version: v3
         kubernetes.io/cluster-service: "true"
     spec:
+      dnsPolicy: ClusterFirst
       containers:
         #- image: k8s.gcr.io/heapster_influxdb:v0.7
         - image: docker.io/ist0ne/heapster_influxdb-amd64:v0.7
