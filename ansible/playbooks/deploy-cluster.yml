@@ -10,6 +10,22 @@
   tags:
     - pre-ansible
 
+# 修改系统配置
+- hosts: all
+  user: root
+  # 是否允许身份切换
+  become: yes
+  tasks:
+  # 支持转发
+  - name: update_sysconf
+    shell: echo 1 > /proc/sys/net/ipv4/ip_forward
+  # 安装必须报
+  - name: install_rhsm
+    shell: yum install *rhsm* -y
+  # 打开防火墙
+  #- name: open_firewall
+  #  shell: systemctl start firewalld.service
+
 # Install etcd
 - include: deploy-etcd.yml
 
@@ -65,19 +81,6 @@
   become: yes
   roles:
     - { role: contiv, contiv_role: netplugin, when: networking == 'contiv' }
-
-# 修改系统配置
-- hosts: all
-  user: root
-  # 是否允许身份切换
-  become: yes
-  tasks:
-  # 支持转发
-  - name: update_sysconf
-    shell: echo 1 > /proc/sys/net/ipv4/ip_forward
-  # 安装必须报
-  - name: install_rhsm
-    shell: yum install *rhsm* -y
 
 # 为节点添加label
 - name: Add label
