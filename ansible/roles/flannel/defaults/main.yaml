@@ -28,4 +28,4 @@ flannel_etcd_key_file: "{{ flannel_etcd_certs_dir }}/client.key"
 
 flannel_system_image: "{{ system_images_registry }}/{{ system_images_registry_namespace }}/flannel:{{ system_images_tag }}"
 
-flannel_options: --iface=enp0s8
+flannel_options: "--iface=eth0"

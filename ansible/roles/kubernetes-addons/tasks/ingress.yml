@@ -15,4 +15,3 @@
     - traefix-ingress-rbac.yaml
     - traefix-ui-service.yaml
     - kube-system-ingress.yaml
-    - default-ingress.yaml
