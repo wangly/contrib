@@ -156,6 +156,7 @@
         - /usr/libexec/kubernetes
         - /etc/etcd
         - /etc/tmpfiles.d
+        - /var/lib/etcd
 
     - name: Reload systemd manager configuration
       command: systemctl daemon-reload
