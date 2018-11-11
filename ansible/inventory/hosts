@@ -1,0 +1,9 @@
+[masters]
+master1
+
+[etcd:children]
+masters
+
+[nodes]
+node[1:2]
+

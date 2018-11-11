@@ -69,7 +69,7 @@ networking: flannel
 # Flannel internal network (optional). When flannel is used, it will assign IP
 # addresses from this range to individual pods.
 # This network must be unused in your network infrastructure!
-flannel_subnet: 172.16.0.0
+flannel_subnet: 10.16.0.0
 
 # Flannel internal network total size (optional). This is the prefix of the
 # entire flannel overlay network.  So the entirety of 172.16.0.0/12 must be
@@ -97,7 +97,10 @@ cluster_monitoring: true
 kube_ui: false
 
 # Turn to false to disable the kube-dash addon for this cluster
-kube_dash: false
+kube_dash: true
+
+# 安装ingress
+ingress: true
 
 # Turn to false to disable the node_problem_detector addon for this cluster
 node_problem_detector: false
@@ -140,6 +143,8 @@ kube_use_master_system_container: false
 kube_use_etcd_system_container: false
 kube_use_flannel_system_container: false
 
+#system_images_registry: "docker.io"
+#system_images_registry_namespace: "openstackmagnum"
 system_images_registry: "candidate-registry.fedoraproject.org"
 system_images_registry_namespace: "f26"
 system_images_tag: "latest"
