@@ -55,3 +55,10 @@ for filename in kube-dash-rc.yaml kube-dash-svc.yaml; do
     curl -Lfo ${filepath} "https://raw.githubusercontent.com/kubernetes/kubedash/master/deploy/${filename}"
 done
 
+# get ingress
+#dir="ingress"
+#mkdir -p $dir
+#for filename in kube-system-ingress.yaml traefix-ingress-ds.yaml traefix-ingress-rbac.yaml traefix-ui-service.yaml; do
+#    filepath="${dir}/${filename}.j2"
+#    curl -Lfo ${filepath} "https://raw.githubusercontent.com/kubernetes/ingress/master/deploy/${filename}"
+#done

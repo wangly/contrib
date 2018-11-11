@@ -8,6 +8,8 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
     ingress.kubernetes.io/ssl-redirect: "false"
+  labels:
+      kubernetes.io/cluster-service: "true"
 spec:
   rules:
   - host: vod.tencent.com

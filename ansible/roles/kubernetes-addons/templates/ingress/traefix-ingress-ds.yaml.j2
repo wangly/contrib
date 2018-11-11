@@ -6,6 +6,7 @@ metadata:
   namespace: kube-system
   labels:
     k8s-app: traefik-ingress-lb
+    kubernetes.io/cluster-service: "true"
 spec:
   template:
     metadata:
