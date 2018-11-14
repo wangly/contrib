@@ -8,6 +8,9 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
     ingress.kubernetes.io/ssl-redirect: "false"
+    #kubernetes.io/ingress.allow-http: "true"
+    #ingress.kubernetes.io/rewrite-target: /
+    #ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
 spec:
   rules:
   - host: vod.tencent.com
@@ -17,11 +20,21 @@ spec:
         backend:
           serviceName: kubernetes-dashboard
           servicePort: 80
-      - path: /grafana
-        backend:
-          serviceName: monitoring-grafana
-          servicePort: 80
       - path: /traefix
         backend:
           serviceName: traefik-web-ui
-          servicePort: web
+          servicePort: 80
+  - host: grafana.vod.tencent.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-grafana
+          servicePort: 80
+  - host: kibana.vod.tencent.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kibana-logging
+          servicePort: 5601
