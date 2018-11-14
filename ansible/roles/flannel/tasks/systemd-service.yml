@@ -12,9 +12,11 @@
   notify:
     - reload systemd
 
+# 未创建出目录
 - name: Create Docker systemd dropin directory
   file: path=/etc/systemd/system/docker.service.d state=directory
 
+# 未执行
 - name: Add Docker drop-in with dependency on Flannel
   copy: src=40-docker-depends-on-flannel.conf dest="/etc/systemd/system/docker.service.d/40-docker-depends-on-flannel.conf"
   notify:

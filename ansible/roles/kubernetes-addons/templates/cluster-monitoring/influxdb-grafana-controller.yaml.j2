@@ -24,6 +24,7 @@ spec:
       containers:
         #- image: k8s.gcr.io/heapster_influxdb:v0.7
         - image: docker.io/ist0ne/heapster_influxdb-amd64:v0.7
+          imagePullPolicy: IfNotPresent
           name: influxdb
           resources:
             # keep request = limit to keep this container in guaranteed class
@@ -40,7 +41,8 @@ spec:
           - name: influxdb-persistent-storage
             mountPath: /data
         #- image: k8s.gcr.io/heapster_grafana:v3.1.1
-        - image: docker.io/ist0ne/heapster_grafana:v3.1.1
+        - image: docker.io/ist0ne/heapster-grafana-amd64:v4.4.3
+          imagePullPolicy: IfNotPresent
           name: grafana
           env:
           resources:
@@ -66,7 +68,7 @@ spec:
             - name: GF_AUTH_ANONYMOUS_ORG_ROLE
               value: Admin
             - name: GF_SERVER_ROOT_URL
-              value: /api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/
+              value: / #/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/
           volumeMounts:
           - name: grafana-persistent-storage
             mountPath: /var

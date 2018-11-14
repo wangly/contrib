@@ -2,7 +2,7 @@
 # roles/etcd/defaults/main.yaml
 etcd_client_port: 2379
 # valid types: package | github-release
-flannel_source_type: package
+flannel_source_type: github-release
 
 # Directory to store downloaded flannel releases
 # (in case of using github-releases).
@@ -28,4 +28,4 @@ flannel_etcd_key_file: "{{ flannel_etcd_certs_dir }}/client.key"
 
 flannel_system_image: "{{ system_images_registry }}/{{ system_images_registry_namespace }}/flannel:{{ system_images_tag }}"
 
-flannel_options: "--iface=eth0"
+flannel_options: "--iface=eth0 --etcd-prefix=/cluster.local/network"

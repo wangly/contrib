@@ -1,5 +1,6 @@
 ---
-etcd_source_type: "pass"
+#etcd_source_type: "pass"
+etcd_source_type: "github-release"
 etcd_version: 3.3.10
 #etcd_version: 2.2.3
 
