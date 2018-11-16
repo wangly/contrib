@@ -17,8 +17,12 @@ spec:
     spec:
       containers:
       - name: fluentd-es
+        env:
+        - name: FLUENTD_ARGS
+          value: -c /etc/fluentd-config/fluentd.conf
         #image: k8s.gcr.io/fluentd-elasticsearch:1.20
-        image: docker.io/ist0ne/fluentd-elasticsearch:v1.20
+        #image: docker.io/ist0ne/fluentd-elasticsearch:v1.22
+        image: index.tenxcloud.com/tenxcloud/fluentd-elasticsearch
         command:
           - '/bin/sh'
           - '-c'
@@ -36,7 +40,7 @@ spec:
           mountPath: /var/lib/docker/containers
           readOnly: true
         - name: config-volume
-          mountPath: /etc/fluent/config.d
+          mountPath: /etc/fluentd-config
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
