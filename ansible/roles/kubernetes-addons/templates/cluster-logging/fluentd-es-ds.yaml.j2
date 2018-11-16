@@ -35,6 +35,8 @@ spec:
         - name: varlibdockercontainers
           mountPath: /var/lib/docker/containers
           readOnly: true
+        - name: config-volume
+          mountPath: /etc/fluent/config.d
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
@@ -43,6 +45,9 @@ spec:
       - name: varlibdockercontainers
         hostPath:
           path: /var/lib/docker/containers
+      - name: config-volume
+        configMap:
+          name: fluentd-es-config
       securityContext:
         seLinuxOptions:
           type: spc_t
