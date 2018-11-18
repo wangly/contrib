@@ -17,12 +17,8 @@ spec:
     spec:
       containers:
       - name: fluentd-es
-        env:
-        - name: FLUENTD_ARGS
-          value: -c /etc/fluentd-config/fluentd.conf
         #image: k8s.gcr.io/fluentd-elasticsearch:1.20
-        #image: docker.io/ist0ne/fluentd-elasticsearch:v1.22
-        image: index.tenxcloud.com/tenxcloud/fluentd-elasticsearch
+        image: docker.io/ist0ne/fluentd-elasticsearch:v1.22
         command:
           - '/bin/sh'
           - '-c'
@@ -40,7 +36,7 @@ spec:
           mountPath: /var/lib/docker/containers
           readOnly: true
         - name: config-volume
-          mountPath: /etc/fluentd-config
+          mountPath: /etc/td-agent/
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
@@ -51,7 +47,7 @@ spec:
           path: /var/lib/docker/containers
       - name: config-volume
         configMap:
-          name: fluentd-es-config
+          name: td-agent-config
       securityContext:
         seLinuxOptions:
           type: spc_t
