@@ -158,8 +158,6 @@
         - /etc/tmpfiles.d
         - /var/lib/etcd
         - /var/lib/kubelet
-        - /var/lib/docker
-        - /var/run/docker
 
     - name: Reload systemd manager configuration
       command: systemctl daemon-reload

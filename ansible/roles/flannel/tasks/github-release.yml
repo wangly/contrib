@@ -1,7 +1,7 @@
 ---
 - stat: path={{ flannel_releases_dir }}/flannel-{{ flannel_version }}
   register: st
-
+# TODO：scp取代download
 - name: Download tar file
   get_url:
     url: "{{ flannel_download_url }}"

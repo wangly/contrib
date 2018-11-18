@@ -1,4 +1,5 @@
 ---
+# TODO：通过scp取代download
 - name: Download tar file
   get_url:
     url: "{{ etcd_download_url }}"

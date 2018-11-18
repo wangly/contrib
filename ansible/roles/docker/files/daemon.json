@@ -1,8 +1,4 @@
 {
     "registry-mirrors": ["https://mirror.ccs.tencentyun.com"],
-    "live-restore": true,
-    "log-opts": {
-        "max-size": "10m",
-        "max-file": "20"
-    }
+    "live-restore": true
 }
