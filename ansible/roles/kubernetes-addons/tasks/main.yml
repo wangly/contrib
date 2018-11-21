@@ -33,6 +33,9 @@
 - include: ingress.yml
   when: ingress
 
+- include: prometheus.yml
+  when: prometheus
+
 - include: node-problem-detector.yml
   when: node_problem_detector
 

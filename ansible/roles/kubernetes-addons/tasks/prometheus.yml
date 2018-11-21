@@ -1,0 +1,22 @@
+---
+- name: MONITORING | Assures {{ kube_config_dir }}/addons/ingress dir exists
+  file: path={{ kube_addons_dir }}/ingress state=directory
+
+- name: MONITORING | Install ingress template
+  template:
+  args:
+    src: "prometheus/{{ item }}.j2"
+    dest: "{{ kube_addons_dir }}/ingress/{{ item }}"
+    mode: 0644
+    owner: root
+    group: root
+  with_items:
+    - prom-configmap.yaml
+    - node-exporter.yaml
+    - prometheus-deploy.yaml
+    - prometheus-svc.yaml
+    - pushgateway-rc.yaml
+    - pushgateway-svc.yaml
+    - rbac-setup.yaml
+
+
