@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: traefik-web-ui
   namespace: kube-system
+  labels:
+    kubernetes.io/cluster-service: "true"
 spec:
   selector:
     k8s-app: traefik-ingress-lb

@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: kube-system-ingress-rule
   namespace: kube-system
+  labels:
+    kubernetes.io/cluster-service: "true"
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip

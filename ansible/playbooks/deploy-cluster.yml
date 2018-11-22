@@ -2,6 +2,26 @@
 # This playbook deploys a kubernetes cluster
 # with the default addons.
 
+# todo: 暂未解决copy /etc/hosts到所有节点
+# 网络支持转发
+- name: update-net
+  hosts: all
+  user: root
+  any_errors_fatal: true
+  tasks:
+    - name: set sysctl
+      sysctl:
+        name: '{{ item }}'
+        value: 1
+        state: present
+        reload: true
+      with_items:
+      - net.ipv4.ip_forward
+      - net.bridge.bridge-nf-call-iptables
+      - net.bridge.bridge-nf-call-ip6tables
+    - name: update_iptables
+      shell: iptables -P FORWARD ACCEPT
+
 - hosts: all
   gather_facts: false
   become: yes
@@ -101,12 +121,5 @@
   tasks:
   - name: pull_pause
     shell: docker pull docker.io/kubernetes/pause
-
-- name: Tag pause
-  hosts: all
-  user: root
-  # 是否允许身份切换
-  become: yes
-  tasks:
-    name: tag_pause
+  - name: tag_pause
     shell: docker tag docker.io/kubernetes/pause gcr.io/google_containers/pause-amd64:3.0

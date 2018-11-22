@@ -102,6 +102,9 @@ kube_dash: true
 # 安装ingress
 ingress: true
 
+#安装prometheus
+prometheus: true
+
 # Turn to false to disable the node_problem_detector addon for this cluster
 node_problem_detector: false
 

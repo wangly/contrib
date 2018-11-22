@@ -17,7 +17,7 @@ data:
           path /var/log/containers/*.log
           pos_file /var/log/es-containers.log.pos
           tag kubernetes.*
-          format /^\[(?<level>[^ ]*)\] (?<logtime>[^\]]*) (?<code>[^ ]*[:$]) (?<message>[\s\S]*[^: ])$/
+          format /^\[(?<level>[^ ]*)\] (?<logtime>[^\]]*) (?<code>[^ ]*[:$]) (?<message>[\s\S]*[^])$/
           read_from_head true
         </source>
         <source>
