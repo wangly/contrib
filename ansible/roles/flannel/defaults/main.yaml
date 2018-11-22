@@ -2,7 +2,7 @@
 # roles/etcd/defaults/main.yaml
 etcd_client_port: 2379
 # valid types: package | github-release
-flannel_source_type: github-release
+flannel_source_type: package
 
 # Directory to store downloaded flannel releases
 # (in case of using github-releases).

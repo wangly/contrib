@@ -18,7 +18,7 @@ spec:
         app: prometheus
     spec:
       containers:
-      - image: prom/prometheus:latest
+      - image: prom/prometheus:v2.5.0
         name: prometheus
         command:
         - "/bin/prometheus"
@@ -34,13 +34,13 @@ spec:
           name: data
         - mountPath: "/etc/prometheus"
           name: config-volume
-#        resources:
-#          requests:
-#            cpu: 100m
-#            memory: 100Mi
-#          limits:
-#            cpu: 500m
-#            memory: 2500Mi
+        resources:
+          requests:
+            cpu: 200m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 2500Mi
       serviceAccountName: prometheus    
       volumes:
       - name: data
@@ -49,4 +49,4 @@ spec:
           path: /vdb/prometheus
       - name: config-volume
         configMap:
-          name: prometheus-config   
+          name: prometheus-config

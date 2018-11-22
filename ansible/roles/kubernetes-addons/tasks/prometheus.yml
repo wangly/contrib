@@ -1,12 +1,12 @@
 ---
-- name: MONITORING | Assures {{ kube_config_dir }}/addons/ingress dir exists
-  file: path={{ kube_addons_dir }}/ingress state=directory
+- name: MONITORING | Assures {{ kube_config_dir }}/addons/prometheus dir exists
+  file: path={{ kube_addons_dir }}/prometheus state=directory
 
-- name: MONITORING | Install ingress template
+- name: MONITORING | Install prometheus template
   template:
   args:
     src: "prometheus/{{ item }}.j2"
-    dest: "{{ kube_addons_dir }}/ingress/{{ item }}"
+    dest: "{{ kube_addons_dir }}/prometheus/{{ item }}"
     mode: 0644
     owner: root
     group: root
