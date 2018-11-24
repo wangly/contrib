@@ -48,7 +48,7 @@
   lineinfile:
     dest: "{{ docker_config_dir }}/docker"
     regexp: "^OPTIONS="
-    line: 'OPTIONS="--selinux-enabled --log-level=warn --log-driver=json-file"'
+    line: 'OPTIONS="--selinux-enabled --log-level=warn --log-driver=journald"'
   notify:
     - restart docker
   when: docker_use_upstart
